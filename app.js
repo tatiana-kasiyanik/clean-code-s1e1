@@ -16,29 +16,29 @@ const completedTasksHolder = document.getElementById("completed-tasks"); //compl
 const createNewTaskElement = function(taskString) {
 
   const listItem = document.createElement("li");
-  listItem.classList.add("list-item");
+  listItem.classList.add("section__item");
 
   //input (checkbox)
   const checkBox = document.createElement("input"); //checkbox
-  checkBox.classList.add("input", "checkbox");
+  checkBox.classList.add("section__input", "section__input_checkbox");
 
   //label
   const label = document.createElement("label"); //label
-  label.classList.add("task-label");
+  label.classList.add("section__label");
 
   //input (text)
   const editInput = document.createElement("input"); //text
-  editInput.classList.add("input", "task-name");
+  editInput.classList.add("section__input", "section__input_text");
 
   //button.edit
   const editButton = document.createElement("button"); //edit button
-  editButton.classList.add("button", "edit-button");
+  editButton.classList.add("section__button", "section__button_edit");
 
   //button.delete
   const deleteButton = document.createElement("button"); //delete button
-  deleteButton.classList.add("button", "delete-button");
+  deleteButton.classList.add("section__button", "section__button_delete");
   const deleteButtonImg = document.createElement("img"); //delete button image
-  deleteButtonImg.classList.add("remove-icon");
+  deleteButtonImg.classList.add("button__icon");
 
   label.innerText=taskString;
 
@@ -86,9 +86,9 @@ const editTask=function() {
   const listItem = this.parentNode;
 
   const editInput = listItem.querySelector("input[type=text]");
-  const label = listItem.querySelector(".task-label");
-  const editBtn = listItem.querySelector(".edit-button");
-  const containsClass = listItem.classList.contains("edit-mode");
+  const label = listItem.querySelector(".section__label");
+  const editBtn = listItem.querySelector(".section__button_edit");
+  const containsClass = listItem.classList.contains("section__item_edit");
 
   //If class of the parent is .edit-mode
   if(containsClass) {
@@ -102,7 +102,7 @@ const editTask=function() {
   }
 
   //toggle .edit-mode on the parent
-  listItem.classList.toggle("edit-mode");
+  listItem.classList.toggle("section__item_edit");
 }
 
 //Delete task
@@ -157,8 +157,8 @@ const bindTaskEvents = function(taskListItem, checkBoxEventHandler) {
 
   //Select ListItems children
   const checkBox = taskListItem.querySelector("input[type=checkbox]");
-  const editButton = taskListItem.querySelector(".edit-button");
-  const deleteButton = taskListItem.querySelector(".delete-button");
+  const editButton = taskListItem.querySelector(".section__button_edit");
+  const deleteButton = taskListItem.querySelector(".section__button_delete");
 
   //Bind editTask to edit button
   editButton.onclick = editTask;
